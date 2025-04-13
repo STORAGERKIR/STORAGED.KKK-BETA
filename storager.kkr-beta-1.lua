@@ -1,39 +1,18 @@
---[[
-
-            REDLINE
-             :**:             
-           :+*%%*+:           
-         :+=.+--+.=+:         
-       :+=. :#  #: .=+:       
-     :+=.   *-  -*   .=+:     
-   :+=     :#    #:     =+:   
-  -@*:::.  *:    :*  .:::*@-  
-   :*#=:-=+%--::--%+=-:=#*:   
-     :+=.  #-:--:-#  .=+:     
-       :+=.-+    +-.=+:       
-         :++%:  :%++:         
-           :*#..#*:           
-             :++:                
-]]--
-
-
 
 -- WARNING: this is pretty much entirely shitcode
 -- im currently working on a rewrite with 10x more features
 -- join discord for updates https://discord.gg/TyKZFQtDvw
 
 if ( _G.RLLOADED and _G.RLNOTIF ) then
-    _G.RLNOTIF('Oops', 'Redline is already loaded. Destroy the current instance by pressing [END]', 5, 'warn', true)
+    _G.RLNOTIF('Oops', 'STORAGER.KKR is already loaded. Destroy the current instance by pressing [END]', 5, 'warn', true)
     return
 end
 
-
-if ( not isfolder('REDLINE') ) then
-    makefolder('REDLINE')
+if ( not isfolder('STORAGER.KKR') ) then
+    makefolder('STORAGER.KKR')
 end
 
-
-local REDLINEVER = 'v0.7.2'
+local STORAGERKKRVER = 'v0.7.2'
 
 if not game:IsLoaded() then game.Loaded:Wait() end
 
@@ -138,12 +117,12 @@ local function DecodeThemeJson(json)
     return RLTHEME, RLTHEMEFONT
 end
 
-if (isfile('REDLINE/theme.json')) then
+if (isfile('STORAGER.KKR/theme.json')) then
     _G.RLLOADERROR = 0
     
     local ThemeData, Font
     pcall(function()
-        local FileData = readfile('REDLINE/theme.json')
+        local FileData = readfile('STORAGER.KKR/theme.json')
         ThemeData, Font = DecodeThemeJson(FileData)
     end)
     
@@ -454,7 +433,7 @@ local ui = {} do
         w_ModListTitle.Font = RLTHEMEFONT
         w_ModListTitle.LayoutOrder = 939
         w_ModListTitle.Size = dimNew(1, 0, 0, 30)
-        w_ModListTitle.Text = ' '..'Redline '..REDLINEVER..' '
+        w_ModListTitle.Text = ' '..'STORAGER.KKR '..STORAGERKKRVER..' '
         w_ModListTitle.TextColor3 = RLTHEMEDATA['tm'][1]
         w_ModListTitle.TextSize = 24
         w_ModListTitle.TextStrokeColor3 = RLTHEMEDATA['to'][1]
@@ -2831,7 +2810,7 @@ local ui = {} do
         _G.RLTHEMEFONT = nil
         _G.RLLOADERROR = nil
         _G.RLQUEUED = nil
-        writefile('REDLINE/Queued.txt', 'false')
+        writefile('STORAGER.KKR/Queued.txt', 'false')
         
         local sound = instNew('Sound')
         sound.SoundId = 'rbxassetid://9009668475'
@@ -3056,7 +3035,7 @@ local ui = {} do
     task.delay(5, function() 
         if (ui_Menus ~= nil and #ui_Menus == 0) then
             ui:Destroy()
-            warn'[REDLINE] Failure to clean library resources!\nAutomatically cleared for you; make sure to\ncall ui:Destroy() when finished'
+            warn'[STORAGER.KKR] Failure to clean library resources!\nAutomatically cleared for you; make sure to\ncall ui:Destroy() when finished'
         end
     end)
 end

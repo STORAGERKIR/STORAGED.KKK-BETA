@@ -3,6 +3,19 @@
 -- im currently working on a rewrite with 10x more features
 -- join discord for updates https://discord.gg/TyKZFQtDvw
 
+
+-- ____ _____ ___  ____      _    ____ _____ ____    _  ___  ______    ____  _____ _____  _    
+--/ ___|_   _/ _ \|  _ \    / \  / ___| ____|  _ \  | |/ / |/ /  _ \  | __ )| ____|_   _|/ \   
+--\___ \ | || | | | |_) |  / _ \| |  _|  _| | |_) | | ' /| ' /| |_) | |  _ \|  _|   | | / _ \  
+ --___) || || |_| |  _ <  / ___ \ |_| | |___|  _ < _| . \| . \|  _ < _| |_) | |___  | |/ ___ \ 
+--|____/ |_| \___/|_| \_\/_/   \_\____|_____|_| \_(_)_|\_\_|\_\_| \_(_)____/|_____| |_/_/   \_\
+
+
+
+
+
+
+
 if ( _G.RLLOADED and _G.RLNOTIF ) then
     _G.RLNOTIF('Oops', 'STORAGER.KKR is already loaded. Destroy the current instance by pressing [END]', 5, 'warn', true)
     return

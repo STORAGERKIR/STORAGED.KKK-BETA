@@ -10,7 +10,9 @@
  --___) || || |_| |  _ <  / ___ \ |_| | |___|  _ < _| . \| . \|  _ < _| |_) | |___  | |/ ___ \ 
 --|____/ |_| \___/|_| \_\/_/   \_\____|_____|_| \_(_)_|\_\_|\_\_| \_(_)____/|_____| |_/_/   \_\
 
-
+if ( _G.RLLOADED and _G.RLNOTIF ) then
+    _G.RLNOTIF('Oops', 'STORAGER.KKR is already loaded. Destroy the current instance by pressing [END]', 5, 'warn', true)
+    return
 
 
 

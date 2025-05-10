@@ -10,20 +10,23 @@
  --___) || || |_| |  _ <  / ___ \ |_| | |___|  _ < _| . \| . \|  _ < _| |_) | |___  | |/ ___ \ 
 --|____/ |_| \___/|_| \_\/_/   \_\____|_____|_| \_(_)_|\_\_|\_\_| \_(_)____/|_____| |_/_/   \_\
 
+
+--storage
+
 if ( _G.RLLOADED and _G.RLNOTIF ) then
-    _G.RLNOTIF('Oops', '  already loaded. Destroy the current instance by pressing [END]', 5, 'warn', true)
+    _G.RLNOTIF('Oops', 'Redline is already loaded. Destroy the current instance by pressing [END]', 5, 'warn', true)
     return
 end
 
 
-if ( not isfolder('STORAGER') ) then
-    makefolder('STORAGER')
+if ( not isfolder('REDLINE') ) then
+    makefolder('REDLINE')
 end
 
 
 local REDLINEVER = 'v0.7.2'
 
-
+if not game:IsLoaded() then game.Loaded:Wait() end
 
 --- Services
 local servContext   = game:GetService('ContextActionService')
@@ -126,12 +129,12 @@ local function DecodeThemeJson(json)
     return RLTHEME, RLTHEMEFONT
 end
 
-if (isfile('STORAGER.KKR/theme.json')) then
+if (isfile('REDLINE/theme.json')) then
     _G.RLLOADERROR = 0
     
     local ThemeData, Font
     pcall(function()
-        local FileData = readfile('STORAGER.KKR/theme.json')
+        local FileData = readfile('REDLINE/theme.json')
         ThemeData, Font = DecodeThemeJson(FileData)
     end)
     
@@ -442,7 +445,7 @@ local ui = {} do
         w_ModListTitle.Font = RLTHEMEFONT
         w_ModListTitle.LayoutOrder = 939
         w_ModListTitle.Size = dimNew(1, 0, 0, 30)
-        w_ModListTitle.Text = ' '..'STORAGER.KKR '..STORAGERKKRVER..' '
+        w_ModListTitle.Text = ' '..'STORAGER.KKR '
         w_ModListTitle.TextColor3 = RLTHEMEDATA['tm'][1]
         w_ModListTitle.TextSize = 24
         w_ModListTitle.TextStrokeColor3 = RLTHEMEDATA['to'][1]
@@ -2819,7 +2822,7 @@ local ui = {} do
         _G.RLTHEMEFONT = nil
         _G.RLLOADERROR = nil
         _G.RLQUEUED = nil
-        writefile('STORAGER.KKR/Queued.txt', 'false')
+        writefile('REDLINE/Queued.txt', 'false')
         
         local sound = instNew('Sound')
         sound.SoundId = 'rbxassetid://9009668475'
@@ -3044,7 +3047,7 @@ local ui = {} do
     task.delay(5, function() 
         if (ui_Menus ~= nil and #ui_Menus == 0) then
             ui:Destroy()
-            warn'[STORAGER.KKR] Failure to clean library resources!\nAutomatically cleared for you; make sure to\ncall ui:Destroy() when finished'
+            warn'[REDLINE] Failure to clean library resources!\nAutomatically cleared for you; make sure to\ncall ui:Destroy() when finished'
         end
     end)
 end
@@ -9445,7 +9448,7 @@ _G.RLTHEME = nil
 if (_G.RLLOADERROR ~= 0) then
     local err = _G.RLLOADERROR
     if (err == 1) then
-        ui:Notify('Redline got an error when loading', 'Couldn\'t load theme properly. Check console for more info', 5, 'warn', true)
+        ui:Notify('Redline got an error when loading','Couldn\'t load theme properly. Check console for more info', 5, 'warn', true)
         print('(Error code 1)')
         print(
             'The JSON decoder recognized the config as invalid JSON.'..
@@ -9465,7 +9468,7 @@ if (_G.RLLOADERROR ~= 0) then
 else
     _G.RLLOADERROR = nil
     
-    ui:Notify(('STORAGER.KKR %s loaded'):format(REDLINEVER), ('Press RightShift to open up the menu'), 7, 'high')
+    ui:Notify(('Redline %s loaded'):format(REDLINEVER), ('Press RightShift to open up the menu'), 7, 'high')
 end
 
 -- Teleport queueing (im like 99% confident this doesnt work anymore)

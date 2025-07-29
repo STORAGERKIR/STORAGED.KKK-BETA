@@ -1,6 +1,5 @@
 
 -- WARNING: this is pretty much entirely shitcode
--- im currently working on a rewrite with 10x more features
 -- join discord for updates https://discord.gg/TyKZFQtDvw
 
 
